@@ -1,12 +1,14 @@
 #include <Windows.h>
 #include <iostream>
 
+#define baseOffset 0x0010F4F4
+#define subgunOffset 0x374
+
 void Detach() {
     fclose(stdout);
     fclose(stderr);
     FreeConsole();
 }
-
 
 DWORD WINAPI fMain(LPVOID lpParameter) {
     AllocConsole();
@@ -14,10 +16,17 @@ DWORD WINAPI fMain(LPVOID lpParameter) {
     freopen_s(&fp, "CONOUT$", "w", stdout);
     freopen_s(&fp, "CONOUT$", "w", stderr);
 
+    uintptr_t Modulebase = reinterpret_cast<uintptr_t>(GetModuleHandle(NULL));
+    auto* subgunVtablePtr = reinterpret_cast<uintptr_t*>(*reinterpret_cast<uintptr_t*>(*reinterpret_cast<uintptr_t*>(Modulebase + baseOffset) + subgunOffset));
+
+    std::cout << subgunVtablePtr << std::endl;
+
     while(true) {
         if (GetAsyncKeyState(VK_DELETE) & 1) {
             break;
         }
+
+        Sleep(10);
     }
 
     FreeLibraryAndExitThread(static_cast<HMODULE>(lpParameter), EXIT_SUCCESS);
