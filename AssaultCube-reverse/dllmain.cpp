@@ -1,6 +1,8 @@
 #include <Windows.h>
 #include <iostream>
 
+#define PrintHex(x) std::cout << "0x" << std::hex << x << std::endl
+
 #define baseOffset 0x0010F4F4
 #define subgunOffset 0x374
 
@@ -19,7 +21,7 @@ DWORD WINAPI fMain(LPVOID lpParameter) {
     uintptr_t Modulebase = reinterpret_cast<uintptr_t>(GetModuleHandle(NULL));
     auto* subgunVtablePtr = reinterpret_cast<uintptr_t*>(*reinterpret_cast<uintptr_t*>(*reinterpret_cast<uintptr_t*>(Modulebase + baseOffset) + subgunOffset));
 
-    std::cout << subgunVtablePtr << std::endl;
+    PrintHex(*subgunVtablePtr + 0x0C);
 
     while(true) {
         if (GetAsyncKeyState(VK_DELETE) & 1) {
