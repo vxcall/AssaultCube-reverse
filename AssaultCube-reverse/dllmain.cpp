@@ -13,21 +13,24 @@ void Detach() {
     FreeConsole();
 }
 
-using tShoot = char (__thiscall*) (DWORD* this1, int* a2);
+using tShoot = char (__thiscall*) (int *this1, int a2, int a3, int a4);
 tShoot oShoot = nullptr;
 
-char __fastcall hShoot(DWORD* this1, int* a2)
+char __fastcall hShoot(int *this1, void* edx, int a2, int a3, int a4)
 {
     std::cout << "shoooooooooot" << std::endl;
-    return oShoot(this1, a2);
+    return oShoot(this1, a2, a3, a4);
 }
 
 uintptr_t Modulebase = reinterpret_cast<uintptr_t>(GetModuleHandle(NULL));
 
 void hookShoot()
 {
-    auto* subgunVtablePtr = reinterpret_cast<uintptr_t*>(*reinterpret_cast<uintptr_t*>(*reinterpret_cast<uintptr_t*>(Modulebase + baseOffset) + subgunOffset));
-    oShoot = reinterpret_cast<tShoot>(DetourFunction(reinterpret_cast<PBYTE>(*(subgunVtablePtr+3)), reinterpret_cast<PBYTE>(hShoot)));
+    //auto* subgunVtablePtr = reinterpret_cast<uintptr_t*>(*reinterpret_cast<uintptr_t*>(*reinterpret_cast<uintptr_t*>(Modulebase + baseOffset) + subgunOffset));
+
+    auto subgunVtablePtr = *reinterpret_cast<uintptr_t*>(*reinterpret_cast<uintptr_t*>(Modulebase + baseOffset) + subgunOffset);
+    void** vTable = *reinterpret_cast<void***>(subgunVtablePtr);
+    oShoot = reinterpret_cast<tShoot>(DetourFunction(reinterpret_cast<PBYTE>(vTable[4]), reinterpret_cast<PBYTE>(hShoot)));
 }
 
 DWORD WINAPI fMain(LPVOID lpParameter) {
@@ -36,8 +39,6 @@ DWORD WINAPI fMain(LPVOID lpParameter) {
     freopen_s(&fp, "CONOUT$", "w", stdout);
     freopen_s(&fp, "CONOUT$", "w", stderr);
     hookShoot();
-
-   // PrintHex(*subgunVtablePtr + 0x0C);
 
     while(true) {
         if (GetAsyncKeyState(VK_DELETE) & 1) {
