@@ -1,6 +1,7 @@
 #include <Windows.h>
 #include <iostream>
-#include "Hook/SubgunShootFunc.h"
+#include "Hook/GunShootFunc.h"
+#include "Hook/GunReloadFunc.h"
 
 #define PrintHex(val) std::cout << "0x" << std::hex << val << std::endl
 
@@ -16,6 +17,7 @@ DWORD WINAPI fMain(LPVOID lpParameter) {
     freopen_s(&fp, "CONOUT$", "w", stdout);
     freopen_s(&fp, "CONOUT$", "w", stderr);
     hookShoot();
+    hookReload();
 
     while(true) {
         if (GetAsyncKeyState(VK_DELETE) & 1) {
