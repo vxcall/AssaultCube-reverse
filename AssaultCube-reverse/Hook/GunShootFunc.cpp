@@ -11,7 +11,7 @@ tShoot oShoot = nullptr;
 
 char __fastcall hShoot(int *this1, void* edx, int a2, int a3, int a4)
 {
-    std::cout << "ammo in magazine: " << *(int*)(*(uintptr_t*)((uintptr_t)this1 + 0x14)) - 1 << std::endl;
+    std::cout << "ammo in magazine: " << **(uintptr_t**)((uintptr_t)this1 + 0x14) - 1 << std::endl;
     return oShoot(this1, a2, a3, a4);
 }
 

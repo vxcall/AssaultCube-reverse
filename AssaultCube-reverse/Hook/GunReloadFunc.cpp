@@ -10,7 +10,10 @@ using tReload = char (__thiscall*) (int this1, char a2);
 tReload oReload = nullptr;
 
 char __fastcall hReload(int this1, void* edx, char a2) {
-    std::cout << "Reloaded" << std::endl;
+    static int16_t MaxAmmo = *(int16_t*)((*(uintptr_t*)((uintptr_t)this1 + 0xC)) + 0x118);
+    if (**(uintptr_t**)((uintptr_t)this1 + 0x10) != 0 && **(uintptr_t**)((uintptr_t)this1 + 0x14) != MaxAmmo) {
+        std::cout << "Reloaded" << std::endl;
+    }
     return oReload(this1, a2);
 }
 
