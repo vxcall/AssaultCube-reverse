@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Hook/GunShootFunc.h"
 #include "Hook/GunReloadFunc.h"
+#include "Hook/HealFunc.h"
 
 #define PrintHex(val) std::cout << "0x" << std::hex << val << std::endl
 
@@ -18,6 +19,7 @@ DWORD WINAPI fMain(LPVOID lpParameter) {
     freopen_s(&fp, "CONOUT$", "w", stderr);
     hookShoot();
     hookReload();
+    hookHeal();
 
     while(true) {
         if (GetAsyncKeyState(VK_DELETE) & 1) {

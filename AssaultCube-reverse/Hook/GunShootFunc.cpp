@@ -9,10 +9,11 @@
 using tShoot = char (__thiscall*) (int *this1, int a2, int a3, int a4);
 tShoot oShoot = nullptr;
 
-char __fastcall hShoot(int *this1, void* edx, int a2, int a3, int a4)
+//ecx and edx are passed to the function, others are puched onto stack
+char __fastcall hShoot(int *ecx, void* edx, int a2, int a3, int a4)
 {
-    std::cout << "ammo in magazine: " << **(uintptr_t**)((uintptr_t)this1 + 0x14) - 1 << std::endl;
-    return oShoot(this1, a2, a3, a4);
+    std::cout << "ammo in magazine: " << **(uintptr_t**)((uintptr_t)ecx + 0x14) - 1 << std::endl;
+    return oShoot(ecx, a2, a3, a4);
 }
 
 void hookShoot()
