@@ -21,7 +21,7 @@ namespace hooks
     {
         uintptr_t Modulebase = reinterpret_cast<uintptr_t>(GetModuleHandle(NULL));
         reload_hook = hook_t((void*)(*(uintptr_t *)(*(uintptr_t*)(Modulebase + 0x0010F4F4) + 0x374))/*hook class*/);
-        reload_hook.hook(indices::reload, hReload);
+        reload_hook.hook(indices::reload, &hReload);
     }
     void uninitialize()
     {
