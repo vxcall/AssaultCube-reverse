@@ -1,7 +1,6 @@
-#include "GunReloadFunc.h"
-#include <iostream>
 #include <Windows.h>
 #include "detours.h"
+#include <iostream>
 
 #define baseOffset 0x0010F4F4
 #define subgunOffset 0x374

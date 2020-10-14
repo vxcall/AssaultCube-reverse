@@ -1,7 +1,4 @@
 #include "GunShootFunc.h"
-#include <Windows.h>
-#include <iostream>
-#include "detours.h"
 
 #define baseOffset 0x0010F4F4
 #define subgunOffset 0x374
