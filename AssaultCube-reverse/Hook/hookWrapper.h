@@ -1,3 +1,5 @@
+#pragma once
+
 #include "hook_t.h"
 
 namespace hooks

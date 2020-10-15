@@ -1,5 +1,1 @@
-#ifndef GUNRELOADFUNC_H
-#define GUNRELOADFUNC_H
-
-
-#endif //GUNRELOADFUNC_H
+#pragma once

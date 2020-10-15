@@ -1,5 +1,4 @@
-#ifndef HOOK_T_H
-#define HOOK_T_H
+#pragma once
 
 #include <unordered_map>
 #include <vector>
@@ -68,4 +67,3 @@ private:
     std::vector< void* > m_originalFunctions;
 };
 
-#endif //HOOK_T_H

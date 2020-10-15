@@ -1,4 +1,1 @@
-#ifndef GUNSHOOTFUNC_H
-#define GUNSHOOTFUNC_H
-
-#endif //GUNSHOOTFUNC_H
+#pragma once
