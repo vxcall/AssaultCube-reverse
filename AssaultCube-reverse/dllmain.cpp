@@ -1,10 +1,6 @@
 #include <Windows.h>
-#include <iostream>
-#include "Hook/GunShootFunc.h"
-#include "Hook/GunReloadFunc.h"
-#include "Hook/HealFunc.h"
+#include "Hook/hookWrapper.h"
 
-#define PrintHex(val) std::cout << "0x" << std::hex << val << std::endl
 
 void Detach() {
     fclose(stdout);
@@ -17,9 +13,7 @@ DWORD WINAPI fMain(LPVOID lpParameter) {
     FILE* fp = NULL;
     freopen_s(&fp, "CONOUT$", "w", stdout);
     freopen_s(&fp, "CONOUT$", "w", stderr);
-    hookShoot();
-    hookReload();
-    hookHeal();
+    hooks::initialize();
 
     while(true) {
         if (GetAsyncKeyState(VK_DELETE) & 1) {
@@ -28,7 +22,7 @@ DWORD WINAPI fMain(LPVOID lpParameter) {
 
         Sleep(10);
     }
-
+    hooks::uninitialize();
     FreeLibraryAndExitThread(static_cast<HMODULE>(lpParameter), EXIT_SUCCESS);
 }
 

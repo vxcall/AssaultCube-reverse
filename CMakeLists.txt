@@ -9,6 +9,9 @@ FILE(GLOB_RECURSE MAIN_HEADER CONFIGURE_DEPENDS ${CMAKE_CURRENT_LIST_DIR}/Assaul
 include_directories(${CMAKE_CURRENT_LIST_DIR}/MSDetour/include)
 link_directories(${CMAKE_CURRENT_LIST_DIR}/MSDetour/binary)
 
+include_directories(${CMAKE_CURRENT_LIST_DIR}/MinHook/include)
+link_directories(${CMAKE_CURRENT_LIST_DIR}/MinHook/bin)
+
 add_library(ACR SHARED ${MAIN_SOURCE} ${MAIN_HEADER})
 
-target_link_libraries(${PROJECT_NAME} detours)
+target_link_libraries(${PROJECT_NAME} MinHook.x86)
