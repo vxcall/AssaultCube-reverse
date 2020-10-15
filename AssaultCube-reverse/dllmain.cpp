@@ -3,6 +3,7 @@
 
 
 void Detach() {
+    hooks::uninitialize();
     fclose(stdout);
     fclose(stderr);
     FreeConsole();
@@ -22,7 +23,7 @@ DWORD WINAPI fMain(LPVOID lpParameter) {
 
         Sleep(10);
     }
-    hooks::uninitialize();
+    Detach();
     FreeLibraryAndExitThread(static_cast<HMODULE>(lpParameter), EXIT_SUCCESS);
 }
 
@@ -37,9 +38,6 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved)
         {
             CloseHandle(hThread);
         }
-    } else if (dwReason == DLL_PROCESS_DETACH && !lpReserved)
-    {
-        Detach();
     }
     return TRUE;
 }

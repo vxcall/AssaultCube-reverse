@@ -1,9 +1,9 @@
+#ifndef HOOK_T_H
+#define HOOK_T_H
+
 #include <unordered_map>
 #include <vector>
 #include "MinHook.h"
-
-#ifndef HOOK_T_H
-#define HOOK_T_H
 
 //HOOK_T.H
 class hook_t
