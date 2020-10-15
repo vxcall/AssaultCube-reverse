@@ -1,9 +1,6 @@
 #include <Windows.h>
-#include <iostream>
-#include "Hook/GunShootFunc.h"
-#include "Hook/GunReloadFunc.h"
+#include "Hook/hookWrapper.h"
 
-#define PrintHex(val) std::cout << "0x" << std::hex << val << std::endl
 
 void Detach() {
     fclose(stdout);
@@ -16,7 +13,6 @@ DWORD WINAPI fMain(LPVOID lpParameter) {
     FILE* fp = NULL;
     freopen_s(&fp, "CONOUT$", "w", stdout);
     freopen_s(&fp, "CONOUT$", "w", stderr);
-    hookShoot();
     hooks::initialize();
 
     while(true) {

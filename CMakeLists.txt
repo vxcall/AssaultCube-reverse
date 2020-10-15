@@ -14,4 +14,4 @@ link_directories(${CMAKE_CURRENT_LIST_DIR}/MinHook/bin)
 
 add_library(ACR SHARED ${MAIN_SOURCE} ${MAIN_HEADER})
 
-target_link_libraries(${PROJECT_NAME} detours MinHook.x86)
+target_link_libraries(${PROJECT_NAME} MinHook.x86)
