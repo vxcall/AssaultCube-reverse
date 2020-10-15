@@ -6,9 +6,6 @@ set(CMAKE_CXX_STANDARD 17)
 FILE(GLOB_RECURSE MAIN_SOURCE CONFIGURE_DEPENDS ${CMAKE_CURRENT_LIST_DIR}/AssaultCube-reverse/*.cpp)
 FILE(GLOB_RECURSE MAIN_HEADER CONFIGURE_DEPENDS ${CMAKE_CURRENT_LIST_DIR}/AssaultCube-reverse/*.h)
 
-include_directories(${CMAKE_CURRENT_LIST_DIR}/MSDetour/include)
-link_directories(${CMAKE_CURRENT_LIST_DIR}/MSDetour/binary)
-
 include_directories(${CMAKE_CURRENT_LIST_DIR}/MinHook/include)
 link_directories(${CMAKE_CURRENT_LIST_DIR}/MinHook/bin)
 
