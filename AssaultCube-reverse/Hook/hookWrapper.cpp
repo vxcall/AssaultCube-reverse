@@ -1,6 +1,5 @@
 #include "hookWrapper.h"
 #include "MinHook.h"
-#include "hook_t.h"
 #include "../offsets.h"
 #include <iostream>
 

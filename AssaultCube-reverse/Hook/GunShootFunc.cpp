@@ -1,5 +1,6 @@
 #include "GunShootFunc.h"
 #include "hookWrapper.h"
+#include <iostream>
 
 char __fastcall hooks::hkShoot ( int* ecx, void* edx, const int a2, const int a3, const int a4 )
 {
