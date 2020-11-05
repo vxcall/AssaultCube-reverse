@@ -10,9 +10,7 @@ class hook_t
 public:
     hook_t ( ) = default;
 
-    explicit hook_t ( void* classPtr ) : m_Ptr ( classPtr )
-    {
-    }
+    explicit hook_t ( void* classPtr ) : m_Ptr ( classPtr ) {}
 
     template < typename t >
     void hook ( const uint32_t index, t fnToHook )
