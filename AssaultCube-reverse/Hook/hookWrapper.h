@@ -6,8 +6,8 @@ namespace hooks
 {
     namespace orgFuncs
     {
-        using reload_t = char(__thiscall*) ( int, char );
-        using shoot_t = char(__thiscall*) ( void*, int, int, int );
+        using reload_t = char(__thiscall*) (int, char);
+        using shoot_t = char(__thiscall*) (void*, int, int, int);
     }
 
     namespace indices
@@ -16,11 +16,11 @@ namespace hooks
         static constexpr int shoot = 4;
     }
 
-    void initialize ( );
-    void uninitialize ( );
+    void initialize();
+    void uninitialize();
 
     extern hook_t subGunHook;
 
-    char __fastcall hkReload ( int ecx, void* edx, char a2 );
-    char __fastcall hkShoot ( int* ecx, void* edx, int a2, int a3, int a4 );
+    char __fastcall hkReload(int ecx, void* edx, char a2);
+    char __fastcall hkShoot(int* ecx, void* edx, int a2, int a3, int a4);
 }

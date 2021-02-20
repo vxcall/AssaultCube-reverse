@@ -27,8 +27,8 @@ namespace hooks {
             MessageBoxA(nullptr, ex.what(), "Error", 0);
         }
 
-        REGISTER_HOOK (subGunHook, indices::reload, hkReload); // A nice little macro :)
-        REGISTER_HOOK (subGunHook, indices::shoot, hkShoot);
+        REGISTER_HOOK(subGunHook, indices::reload, hkReload); // A nice little macro :)
+        REGISTER_HOOK(subGunHook, indices::shoot, hkShoot);
     }
 
     void uninitialize() {
