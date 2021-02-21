@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <vector>
 #include "MinHook.h"
+#include <iostream>
 
 //HOOK_T.H
 class hook_t

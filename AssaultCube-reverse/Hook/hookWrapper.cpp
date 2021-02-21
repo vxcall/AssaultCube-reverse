@@ -19,8 +19,7 @@ namespace hooks {
             subGunHook = hook_t /* vtable pointer = class ptr, do this because otherwise u r just reusing the same vtable over and over again when doing e.g reload and shoot hook, this allows u to do what's done below. */
                     (
                             reinterpret_cast<void*>(*reinterpret_cast<uintptr_t*>(
-                                    *reinterpret_cast<uintptr_t*>
-                                    (modBase + offsets::localPlayer) + offsets::secondaryGun))
+                                    *reinterpret_cast<uintptr_t*>(modBase + offsets::localPlayer) + offsets::secondaryGun)) //This is an address of Vtable pointer, not a first func of Vtable or something.
                     );
         }
         catch (const std::exception &ex) {
