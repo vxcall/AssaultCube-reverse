@@ -14,7 +14,7 @@ namespace hooks {
             if (MH_Initialize() != MH_OK) // Always remember to initialize minhook at the beginning of your hook initializing ( you forgot this )
                 throw std::exception("MH_Initialize failed!");
 
-            const uintptr_t modBase = reinterpret_cast< uintptr_t> ( GetModuleHandle(nullptr));
+            const uintptr_t modBase = reinterpret_cast<uintptr_t>(GetModuleHandle(nullptr));
 
             subGunHook = hook_t /* vtable pointer = class ptr, do this because otherwise u r just reusing the same vtable over and over again when doing e.g reload and shoot hook, this allows u to do what's done below. */
                     (
